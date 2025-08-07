@@ -1,0 +1,167 @@
+@import 'tailwindcss';
+
+@font-face {
+    font-family: 'ProximaNova';
+    src: url('/fonts/ProximaNova-Regular.otf') format('opentype');
+}
+
+:root {
+    --main: #232224;
+    --black: #222123;
+    --white: #ffffff;
+    --dark-brown: #523122;
+    --mid-brown: #a26833;
+    --light-brown: #e3a458;
+    --red: #a02128;
+    --red-brown: #7f3b2d;
+    --yellow-brown: #a26833;
+    --milk: #faeade;
+    --milk-yellow: #e3d3bc;
+    --font-sans: 'Antonio', sans-serif;
+    --font-paragraph: 'ProximaNova', sans-serif;
+}
+
+@theme inline {
+    --color-main: var(--main);
+    --color-black: var(--black);
+    --color-white: var(--white);
+    --color-dark-brown: var(--dark-brown);
+    --color-mid-brown: var(--mid-brown);
+    --color-light-brown: var(--light-brown);
+    --color-red: var(--red);
+    --color-red-brown: var(--red-brown);
+    --color-yellow-brown: var(--yellow-brown);
+    --color-milk: var(--milk);
+    --color-milk-yellow: var(--milk-yellow);
+    --font-sans: var(--font-sans);
+    --font-paragraph: var(--font-paragraph);
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--milk);
+    color: var(--dark-brown);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    ::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+    }
+}
+
+@layer utilities {
+    .flex-row-center {
+        @apply flex flex-row items-center justify-center;
+    }
+
+    .flex-col-center {
+        @apply flex flex-col items-center justify-center;
+    }
+
+    .absolute-center {
+        @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+    }
+
+    .general-title {
+        @apply text-5xl leading-[9vw] font-bold tracking-[-.35vw] uppercase md:text-8xl 2xl:text-9xl;
+    }
+}
+
+@layer components {
+    .paragraph-line {
+        @apply overflow-hidden text-nowrap;
+    }
+
+    .benefit-section {
+        @apply relative min-h-dvh overflow-hidden bg-[#222123];
+
+        p {
+            @apply text-milk font-paragraph text-center text-lg;
+        }
+
+        .first-title {
+            @apply relative z-10 rotate-[3deg];
+        }
+
+        .second-title {
+            @apply rotate-[-1deg] md:-translate-y-5;
+        }
+
+        .third-title {
+            @apply relative z-10 rotate-[1deg] md:-translate-y-12;
+        }
+
+        .fourth-title {
+            @apply rotate-[-5deg] md:-translate-y-12;
+        }
+
+        .vd-pin-section {
+            @apply mt-20 h-dvh overflow-hidden md:mt-0 md:h-[110vh] md:!-translate-y-[15%];
+
+            video {
+                @apply absolute inset-0 size-full object-cover;
+            }
+
+            .play-btn {
+                @apply absolute top-1/2 left-1/2 flex size-[9vw] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#ffffff1a] backdrop-blur-xl;
+            }
+
+            img:first-of-type {
+                @apply size-[15vw];
+            }
+        }
+    }
+
+    .testimonials-section {
+        @apply bg-milk relative h-[120dvh] w-full;
+
+        .pin-box {
+            @apply absolute bottom-[50vh] flex w-full items-center justify-center ps-52 2xl:bottom-32;
+
+            .vd-card {
+                @apply border-milk absolute -ms-44 w-80 flex-none overflow-hidden rounded-3xl border-[.5vw] md:w-96 md:rounded-[2vw] 2xl:relative;
+            }
+        }
+
+        h1 {
+            @apply ml-[2vw] text-[20.5vw] leading-[105%] font-bold tracking-[-.4vw] uppercase;
+        }
+    }
+
+    .footer-section {
+        @apply relative overflow-hidden bg-[#222123] 2xl:min-h-dvh;
+
+        .social-btn {
+            @apply flex size-14 cursor-pointer items-center justify-center rounded-full border border-[#faeade33] p-3 transition-colors hover:bg-[#ffffff1a] md:size-[5vw] md:p-0;
+        }
+
+        input {
+            @apply text-3xl placeholder:font-bold placeholder:tracking-tighter 2xl:text-4xl;
+        }
+
+        .copyright-box {
+            @apply text-milk font-paragraph bottom-0 flex w-full flex-col-reverse items-center justify-center gap-7 px-5 py-7 opacity-50 md:flex-row md:justify-between md:px-10 md:text-lg 2xl:absolute;
+
+            p {
+                @apply text-center;
+            }
+        }
+    }
+}
+
+.spin-circle {
+    animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
